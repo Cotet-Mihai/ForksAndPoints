@@ -1,0 +1,16 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    margin: 0;
+    background: linear-gradient(to bottom right, #A8E063, #56c1e1);
+    color: #333; /* Text color pentru contrast */
+}
+
+#form-content {
+    background: #fff;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); /* Adăugarea umbrei */
+    padding: 20px 20px 0 20px;
+}
