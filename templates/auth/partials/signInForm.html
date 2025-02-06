@@ -1,0 +1,25 @@
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh">
+    <form class="card" style="width: 22rem;" method="post" action="{{ url_for('auth.sign_in') }}">
+        <div class="card-body">
+            <h5 class="card-title text-center mb-5">Sign in</h5>
+
+            <div class="form-outline mb-4" data-mdb-input-init>
+                <input type="text" id="signinUsername" class="form-control"name="signinUsername" required>
+                <label class="form-label" for="signinUsername">Username</label>
+            </div>
+
+            <div class="form-outline mb-4" data-mdb-input-init>
+                <i class="far fa-eye trailing fa-fw pe-auto" id="show-password-toggle-icon"></i>
+                <input type="password" id="signinPassword" class="form-control form-icon-trailing" name="signinPassword" required>
+                <label class="form-label" for="signinPassword">Password</label>
+            </div>
+            <p class="text-center mt-3">
+                Don't have an account? <a href="{{ url_for('auth.sign_up') }}">Sign up here</a>
+            </p>
+
+            <button type="submit" class="btn btn-success btn-block" data-mdb-ripple-init>Sign in</button>
+        </div>
+    </form>
+</div>
+
+<script type="module" src="{{ url_for('static', filename='js/signIn.js') }}"></script>
