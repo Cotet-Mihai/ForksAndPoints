@@ -3,9 +3,10 @@ from dotenv import load_dotenv
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-
+from flask_bcrypt import Bcrypt
 
 db = SQLAlchemy()
+bcrypt = Bcrypt()
 
 def create_app():
     load_dotenv()
@@ -15,6 +16,7 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('MYSQL_URI')
 
     db.init_app(app)
+    bcrypt.init_app(app)
 
     from routes.auth_routes import auth_db
     app.register_blueprint(auth_db)

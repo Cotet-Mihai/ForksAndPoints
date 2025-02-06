@@ -1,26 +1,72 @@
 <div class="container d-flex justify-content-center align-items-center" style="height: 100vh">
-    <form class="card" style="width: 25rem;">
+    <form id="signupForm" class="card" style="width: 25rem;" method="post" action="{{ url_for('auth.signup') }}">
         <div class="card-body">
             <h5 class="card-title text-center mb-5">Sign up</h5>
 
             <div class="form-outline mb-4" data-mdb-input-init>
-                <input class="form-control" type="text" id="signupUsername" required />
+                <input class="form-control" type="text" id="signupUsername" name="signupUsername" required />
                 <label class="form-label" for="signupUsername">Username</label>
             </div>
 
             <div class="form-outline mb-4" data-mdb-input-init>
-                <i class="far fa-eye trailing fa-fw pe-auto" id="show-password-toggle-icon"></i>
-                <input class="form-control form-icon-trailing" type="password" id="signupPassword" required />
-                <label class="form-label" for="signupPassword">Password</label>
+                <input class="form-control" type="email" id="signupEmail" name="signupEmail" required />
+                <label class="form-label" for="signupEmail">Email</label>
             </div>
 
-            <div class="form-outline mb-4" data-mdb-input-init>
-                <i class="far fa-eye trailing fa-fw pe-auto" id="show-password-toggle-icon"></i>
-                <input class="form-control form-icon-trailing" type="password" id="signupRepetPassword" required />
-                <label class="form-label" for="signupRepetPassword">Repet password</label>
+            <div class="d-flex gap-2">
+                <div class="form-outline mb-4" data-mdb-input-init>
+                    <i class="far fa-eye trailing fa-fw pe-auto password-toggle-icon"></i>
+                    <input class="form-control form-icon-trailing password-field" type="password" id="signupPassword" required />
+                    <label class="form-label" for="signupPassword">Password</label>
+                </div>
+
+                <div class="form-outline mb-4" data-mdb-input-init>
+                    <i class="far fa-eye trailing fa-fw pe-auto password-toggle-icon"></i>
+                    <input class="form-control form-icon-trailing password-field" type="password" id="signupRepetPassword"
+                           name="signupRepetPassword" required />
+                    <label class="form-label" for="signupRepetPassword">Repeat password</label>
+                </div>
             </div>
+
+            <p class="text-center mt-3">
+                Do you already have an account? <a href="{{ url_for('auth.login_form') }}">Log in here</a>
+            </p>
+
+            <button type="submit" class="btn btn-success btn-block" data-mdb-ripple-init>Sign In</button>
+
         </div>
     </form>
-
-
 </div>
+
+<script>
+document.querySelectorAll('.password-toggle-icon').forEach(icon => {
+    icon.addEventListener('pointerdown', (e) => {
+        e.preventDefault();
+        const passwordField = icon.nextElementSibling;
+
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            icon.classList.replace('fa-eye', 'fa-eye-slash');
+        } else {
+            passwordField.type = 'password';
+            icon.classList.replace('fa-eye-slash', 'fa-eye');
+        }
+    });
+});
+
+document.getElementById('signupForm').addEventListener('submit', function (e) {
+
+    const password1 = document.getElementById('signupPassword');
+    const password2 = document.getElementById('signupRepetPassword');
+    const icon2 = password2.previousElementSibling;
+
+    if (password1.value !== password2.value) {
+        icon2.classList.add('text-danger');
+        password2.classList.add('text-danger');
+        e.preventDefault();
+    } else {
+        icon2.classList.remove('text-danger');
+        password2.classList.remove('text-danger');
+    }
+});
+</script>
