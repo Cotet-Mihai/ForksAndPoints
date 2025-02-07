@@ -1,44 +1,34 @@
-<div class="container d-flex justify-content-center align-items-center flex-column" style="height: 100vh">
-    <div class="alert alert-absolute" role="alert">
-      This is a primary alert—check it out!
+<div class="container d-flex justify-content-center align-items-center flex-column" style="height: 100vh" id="form-container">
+    <div id="notification-container">
+        <p id="notification-message"></p>
     </div>
-    <!--todo: fa o alerta pentru erori-->
 
-    <form id="signupForm" class="card" style="width: 25rem;">
+    <form class="card" style="width: 22rem;">
         <div class="card-body">
             <h5 class="card-title text-center mb-5">Sign up</h5>
 
-            <div class="form-text mb-2 text-danger " id="username-error" hidden>
-                This username already exists!
-            </div>
-            <div class="form-outline mb-4" data-mdb-input-init id="div-username">
+            <div class="form-outline mb-4" data-mdb-input-init>
                 <input class="form-control" type="text" id="signupUsername" name="signupUsername" required />
                 <label class="form-label" for="signupUsername">Username</label>
                 <i class="fas fa-exclamation-circle trailing" hidden id="username-exclamation"></i>
             </div>
 
-            <div class="form-text mb-2 text-danger " id="email-error" hidden>
-                This email already exists!
-            </div>
             <div class="form-outline mb-4" data-mdb-input-init>
                 <input class="form-control" type="email" id="signupEmail" name="signupEmail" required />
                 <label class="form-label" for="signupEmail">Email</label>
                 <i class="fas fa-exclamation-circle trailing" hidden id="email-exclamation"></i>
             </div>
 
-            <div class="d-flex gap-2">
-                <div class="form-outline mb-4" data-mdb-input-init>
-                    <i class="far fa-eye trailing fa-fw pe-auto password-toggle-icon"></i>
-                    <input class="form-control form-icon-trailing password-field" type="password" id="signupPassword" required />
-                    <label class="form-label" for="signupPassword">Password</label>
-                </div>
+            <div class="form-outline mb-4" data-mdb-input-init>
+                <i class="far fa-eye trailing fa-fw pe-auto password-toggle-icon"></i>
+                <input class="form-control form-icon-trailing password-field" type="password" id="signupPassword" required />
+                <label class="form-label" for="signupPassword">Password</label>
+            </div>
 
-                <div class="form-outline mb-4" data-mdb-input-init>
-                    <i class="far fa-eye trailing fa-fw pe-auto password-toggle-icon"></i>
-                    <input class="form-control form-icon-trailing password-field" type="password" id="signupRepetPassword"
-                           name="signupRepetPassword" required />
-                    <label class="form-label" for="signupRepetPassword">Repeat password</label>
-                </div>
+            <div class="form-outline mb-4" data-mdb-input-init>
+                <i class="far fa-eye trailing fa-fw pe-auto password-toggle-icon"></i>
+                <input class="form-control form-icon-trailing password-field" type="password" id="signupRepetPassword" name="signupRepetPassword" required />
+                <label class="form-label" for="signupRepetPassword">Repeat password</label>
             </div>
 
             <p class="text-center mt-3">

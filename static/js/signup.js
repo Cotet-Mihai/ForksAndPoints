@@ -1,4 +1,5 @@
 import {showPassword, validateMatchInputs} from "./elementsControl.js";
+import {Notification} from "./notification.js";
 
 document.querySelectorAll('.password-toggle-icon').forEach(icon => {
     icon.addEventListener('pointerdown', (e) => {
@@ -14,11 +15,9 @@ document.getElementById('signupForm').addEventListener('submit', function (e) {
 
     const username = document.getElementById('signupUsername');
     const usernameExclamation = document.getElementById('username-exclamation');
-    const usernameInfo = document.getElementById('username-error')
 
     const email = document.getElementById('signupEmail');
     const emailExclamiation = document.getElementById('email-exclamation');
-    const emailInfo = document.getElementById('email-error');
 
     const password = document.getElementById('signupPassword');
     const repetPassword = document.getElementById('signupRepetPassword');
@@ -41,33 +40,44 @@ document.getElementById('signupForm').addEventListener('submit', function (e) {
 
         .then(data => {
             if (data['status'] === 'success') {
+                // todo: notificare cu succes si redirect catre login in 3 secunde
                 window.location.href = '/';
             } else if (data['status'] === 'error') {
-
+                // todo: modifica api-ul sa verifice si username si email si sa returneze informatie pentru amandoua ca sa le poti verifica aici simultan
                 switch (data['msg']) {
 
                     case 'Username already exist!':
-                        username.classList.add('is-invalid');
-                        usernameExclamation.removeAttribute('hidden');
-                        usernameExclamation.classList.add('text-danger');
-                        usernameInfo.removeAttribute('hidden');
+                        changeInput(false, username, usernameExclamation);
+                        Notification.showNotification(data['status'], data['msg']);
                         break;
 
                     case 'Email already exist!':
-                        email.classList.add('is-invalid');
-                        emailExclamiation.removeAttribute('hidden');
-                        emailExclamiation.classList.add('text-danger');
-                        emailInfo.removeAttribute('hidden');
+                        changeInput(false, email, emailExclamiation);
+                        changeInput(true, username, usernameExclamation);
 
-                        usernameInfo.setAttribute('hidden', true);
-                        username.classList.remove('is-invalid');
-                        usernameExclamation.setAttribute('hidden', true);
+                        Notification.showNotification(data['status'], data['msg']);
                         break;
 
                     default:
-                        console.log(data['msg'])
+                        Notification.showNotification(data['status'], data['msg']);
+                        break;
                 }
             }
-        })
+        });
+
+    function changeInput(state, input, icon){
+        switch (state){
+            case true:
+                input.classList.remove('is-invalid');
+                icon.setAttribute('hidden', true);
+                icon.classList.remove('text-danger');
+                break;
+
+            case false:
+                input.classList.add('is-invalid');
+                icon.removeAttribute('hidden', true);
+                icon.classList.add('text-danger');
+        }
+    }
 });
 

@@ -9,6 +9,8 @@
         	Forks and Points
         {% endblock %}
     </title>
+    <!-- Notification style-->
+      <link rel="stylesheet" href="{{ url_for('static', filename=('css/notification.css')) }}">
     <!-- Background gradient-->
       <link rel="stylesheet" href="{{ url_for('static', filename=('css/auth/base.css')) }}">
 
@@ -30,7 +32,6 @@
     <!-- MDB -->
     <link rel="stylesheet" href="{{ url_for('static', filename='mdb5-free-standard/css/mdb.min.css') }}" />
     <!-- BootStrap -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-pzjw8f+ua7Kw1TIq0+nfsdT2E2X7Tch/xxD5Un+XkQ6DdSxZ45apJ7k7dzWj0dKx" crossorigin="anonymous">
   </head>
 
   <body>
@@ -44,9 +45,5 @@
     <script type="text/javascript" src="{{ url_for('static', filename='mdb5-free-standard/js/mdb.umd.min.js') }}"></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
-      <!-- BootStrap -->
-     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zyfxDibC+J54/3PaNdF+YiX5D7fgpcgQbmHjHZA9" crossorigin="anonymous"></script>
-     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gyb6c2Mw7cK5aPp4Hllp66lDggt4YQpxUQH5H+4vkmxuWfU3D+7" crossorigin="anonymous"></script>
-     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0+nfsdT2E2X7Tch/xxD5Un+XkQ6DdSxZ45apJ7k7dzWj0dKx" crossorigin="anonymous"></script>
   </body>
 </html>

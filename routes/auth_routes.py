@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, jsonify
 from services.auth_services import verify_login, create_new_user
 
 auth_db = Blueprint('auth', __name__)

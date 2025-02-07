@@ -21,3 +21,4 @@ export function validateMatchInputs(firstInput, secondInput, secondIcon, event) 
         secondInput.classList.remove('text-danger');
     }
 }
+
