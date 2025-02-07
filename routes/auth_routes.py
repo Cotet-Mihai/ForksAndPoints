@@ -35,4 +35,6 @@ def add_new_user():
 
     response = create_new_user(new_user)
 
+    print(response)
+
     return response

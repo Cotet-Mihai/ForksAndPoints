@@ -26,7 +26,7 @@ export class Notification {
         let backgroundColor;
         switch (category.toLowerCase()) {
             case 'success':
-                backgroundColor = 'var(--green-level-1)';
+                backgroundColor = '#4CAF50';
                 break;
             case 'error':
                 backgroundColor = '#dc4c64';

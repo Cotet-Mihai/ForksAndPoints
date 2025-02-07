@@ -23,7 +23,7 @@ document.getElementById('signupForm').addEventListener('submit', function (e) {
     const repetPassword = document.getElementById('signupRepetPassword');
     const repetPasswordIcon = repetPassword.previousElementSibling;
 
-    validateMatchInputs(password, repetPassword, repetPasswordIcon, e);
+    validateMatchInputs(password, repetPassword, repetPasswordIcon);
 
     fetch('/add_new_user', {
         method: 'POST',
@@ -40,30 +40,58 @@ document.getElementById('signupForm').addEventListener('submit', function (e) {
 
         .then(data => {
             if (data['status'] === 'success') {
-                // todo: notificare cu succes si redirect catre login in 3 secunde
-                window.location.href = '/';
+                let countdown = 3;
+                const notificationMessage = `Success!\nYou will be redirected to the login page ${countdown}...`;
+
+                Notification.showNotification('success', notificationMessage);
+
+                const interval = setInterval(() => {
+
+                    const currentMessage = `Success!<br>You will be redirected to the login page ${countdown}...`;
+
+                    const lastNotification = document.querySelector('.notification .notification-message');
+                    if (lastNotification) {
+                        lastNotification.innerHTML = currentMessage;
+                    }
+                    countdown--;
+
+                    if (countdown < 0) {
+                        clearInterval(interval);
+                        window.location.href = '/';
+                    }
+                }, 1000);
             } else if (data['status'] === 'error') {
-                // todo: modifica api-ul sa verifice si username si email si sa returneze informatie pentru amandoua ca sa le poti verifica aici simultan
-                switch (data['msg']) {
 
-                    case 'Username already exist!':
-                        changeInput(false, username, usernameExclamation);
-                        Notification.showNotification(data['status'], data['msg']);
-                        break;
+                if (data['username_exists']) {
+                    changeInput(false, username, usernameExclamation);
+                } else {
+                    changeInput(true, username, usernameExclamation);
+                }
 
-                    case 'Email already exist!':
-                        changeInput(false, email, emailExclamiation);
-                        changeInput(true, username, usernameExclamation);
+                if (data['email_exists']) {
+                    changeInput(false, email, emailExclamiation);
+                } else {
+                    changeInput(true, email, emailExclamiation);
+                }
 
-                        Notification.showNotification(data['status'], data['msg']);
-                        break;
+                let items = "";
+                if (data['username_exists']) items += "Username ";
+                if (data['email_exists']) items += "Email";
 
-                    default:
-                        Notification.showNotification(data['status'], data['msg']);
-                        break;
+                if (items === "Username ") {
+                    Notification.showNotification(data['status'], 'Username already exists!');
+                } else if (items === "Email") {
+                    Notification.showNotification(data['status'], 'Email already exists!');
+                } else if (items.trim()) {
+                    // Dacă ambele există, vei afișa mesajul complet
+                    Notification.showNotification(data['status'], 'The following already exist: ' + items.trim());
+                } else {
+                    // Dacă nu există niciunul, probabil nu ar trebui să ajungi aici, dar poți adăuga un mesaj de succes
+                    Notification.showNotification(data['status'], 'All good!');
                 }
             }
         });
+
 
     function changeInput(state, input, icon){
         switch (state){

@@ -1,3 +1,5 @@
+import {Notification} from "./notification.js";
+
 export function showPassword(input, icon) {
 
         if (input.type === 'password') {
@@ -11,14 +13,14 @@ export function showPassword(input, icon) {
         }
 }
 
-export function validateMatchInputs(firstInput, secondInput, secondIcon, event) {
+export function validateMatchInputs(firstInput, secondInput, secondIcon) {
     if (firstInput.value !== secondInput.value) {
         secondIcon.classList.add('text-danger');
-        secondInput.classList.add('text-danger');
-        event.preventDefault();
+        secondInput.classList.add('is-invalid');
+        Notification.showNotification('error', 'The passwords do not match')
     } else {
         secondIcon.classList.remove('text-danger');
-        secondInput.classList.remove('text-danger');
+        secondInput.classList.remove('is-invalid');
     }
 }
 

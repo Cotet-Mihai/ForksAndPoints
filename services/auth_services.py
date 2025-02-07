@@ -18,26 +18,25 @@ def create_new_user(user):
     hashed_password = bcrypt.generate_password_hash(user['password']).decode('utf-8')
 
     try:
-        existing_user = Users.query.filter(
+        existing_users = Users.query.filter(
             (Users.username == user['username']) | (Users.email == user['email'])
-        ).first()
+        ).all()
 
-        if existing_user:
-            if existing_user.username == user['username']:
-                return jsonify({
-                    'status': 'error',
-                    'msg': 'Username already exist!'
-                })
-            if existing_user.email == user['email']:
-                return jsonify({
-                    'status': 'error',
-                    'msg': 'Email already exist!'
-                })
+        username_exists = any(u.username == user['username'] for u in existing_users)
+        email_exists = any(u.email == user['email'] for u in existing_users)
+
+        if username_exists or email_exists:
+            return jsonify({
+                'status': 'error',
+                'username_exists': username_exists,
+                'email_exists': email_exists,
+                'msg': 'Username and/or email already exist!'
+            })
 
         new_user = Users(
-            username = user['username'],
-            email = user['email'],
-            password = hashed_password,
+            username=user['username'],
+            email=user['email'],
+            password=hashed_password,
             firstTime=1
         )
 
