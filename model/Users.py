@@ -8,6 +8,3 @@ class Users(db.Model):
     email = db.Column(db.String(100), nullable=False, unique=True)
     password = db.Column(db.String(100), nullable=False)
     firstTime = db.Column(db.Boolean, default=True)
-
-    def __repr__(self):
-        print(f'User {self.username} with ID: {self.pid} was successfully added')
