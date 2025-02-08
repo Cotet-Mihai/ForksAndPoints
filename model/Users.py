@@ -8,3 +8,4 @@ class Users(db.Model):
     email = db.Column(db.String(100), nullable=False, unique=True)
     password = db.Column(db.String(100), nullable=False)
     firstTime = db.Column(db.Boolean, default=True)
+

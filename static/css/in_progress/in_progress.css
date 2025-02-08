@@ -1,0 +1,33 @@
+#body {
+    background-color: #151414; /* Fundal negru */
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    margin: 0;
+}
+
+h1 {
+    background-image: linear-gradient(-45deg, #A8E063, #7BCB5E, #56c1e1, #3A9CBF);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+p {
+    color: white;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

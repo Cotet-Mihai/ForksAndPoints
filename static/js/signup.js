@@ -28,7 +28,7 @@ document.getElementById('signupForm').addEventListener('submit', function (e) {
 
 
     // Send form data to backend to create a new user
-    fetch('/add_new_user', {
+    fetch('/sign-up', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -45,13 +45,13 @@ document.getElementById('signupForm').addEventListener('submit', function (e) {
             // Handle success response
             if (data['status'] === 'success') {
                 let countdown = 3;
-                const notificationMessage = `Success!\nYou will be redirected to the login page ${countdown}...`;
+                const notificationMessage = `Success!\nYou will be redirected to the sign-in ${countdown}...`;
 
                 // Show notification and countdown for redirection
                 Notification.showNotification('success', notificationMessage);
 
                 const interval = setInterval(() => {
-                    const currentMessage = `Success!<br>You will be redirected to the login page ${countdown}...`;
+                    const currentMessage = `Success!<br>You will be redirected to the sign-in ${countdown}...`;
 
                     const lastNotification = document.querySelector('.notification .notification-message');
                     if (lastNotification) {

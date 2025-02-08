@@ -1,4 +1,4 @@
-from flask import jsonify
+from flask import jsonify, session
 from flask_bcrypt import check_password_hash
 from app import db, bcrypt
 from model.Users import Users
@@ -26,6 +26,8 @@ def verify_login(username, password):
 
         # Check if the provided password matches the stored password
         if check_password_hash(user.password, password):
+            # Add user to session
+            session['userID'] = user.pid
             # If passwords match, return success with the firstTime status
             return jsonify({
                 'status': 'success',

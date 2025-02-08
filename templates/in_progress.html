@@ -1,0 +1,15 @@
+{% extends 'auth/base.html' %}
+{% block title %}
+	In Progress..
+{% endblock %}
+{% block content %}
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/in_progress/in_progress.css') }}">
+
+    <div class="container-fluid" style="; background: #000;" id="body">
+        <div class="container d-flex justify-content-center align-items-center">
+            <h1>Still cooking</h1> <h2>🍑</h2>
+        </div>
+        <p>Good things take time... Hang tight, we’re making this awesome just for you!</p>
+    </div>
+{% endblock %}
+
