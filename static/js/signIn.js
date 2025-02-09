@@ -34,15 +34,16 @@ document.getElementById('signinForm').addEventListener('submit', function (e) {
             if (data['status'] === 'success') {
                 // Redirect based on the first-time login status
                 if (data['firstTime'] === "True") {
-                    window.location.href = '/questionnaire';
+                    window.location.href = '/questionnaire/info/';
                 } else {
-                    window.location.href = '/rooms';
+                    window.location.href = '/rooms/';
                 }
             } else {
                 // Display error notification and mark fields as invalid
                 username.classList.add('is-invalid');
                 password.classList.add('is-invalid');
                 Notification.showNotification('error', data['msg']);
+                console.log(data['msg'])
             }
         })
         .catch(error => {

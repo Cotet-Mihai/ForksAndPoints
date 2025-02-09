@@ -1,0 +1,18 @@
+{% extends 'questionnaire/partials/baseQuestionnaire.html' %}
+
+{% block card_header %}
+    How old are you? 🎂
+{% endblock %}
+
+{% block card_body %}
+
+    <input type="number" id="age" class="form-control" name="age" value="30" required>
+
+{% endblock %}
+
+{% block card_footer %}
+	<div class="container d-flex justify-content-center align-items-center gap-2">
+        <button class="btn btn-success" data-mdb-ripple-init id="backQuestion">Back</button>
+        <button class="btn btn-success" data-mdb-ripple-init id="nextQuestion">Next</button>
+    </div>
+{% endblock %}

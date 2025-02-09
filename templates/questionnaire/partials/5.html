@@ -1,0 +1,51 @@
+<style>
+    .option {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;  /* spațiu între categorii */
+    }
+
+    .option input[type="radio"] {
+        margin-right: 10px;  /* distanța dintre buton și text */
+    }
+
+    .option label {
+        font-size: 16px;  /* poți ajusta dimensiunea textului dacă vrei */
+    }
+
+</style>
+
+{% extends 'questionnaire/partials/baseQuestionnaire.html' %}
+
+{% block card_header %}
+    Do you have any dietary preferences?
+{% endblock %}
+
+{% block card_body %}
+    <div class="option">
+        <input type="radio" id="vegean" name="diet" value="vegan">
+        <label for="vegean">Vegan 🥦🌱</label>
+    </div>
+
+    <div class="option">
+        <input type="radio" id="vegetarian" name="diet" value="vegetarian">
+        <label for="vegetarian">Vegetarian 🥛🍳</label>
+    </div>
+
+    <div class="option">
+        <input type="radio" id="carnivore" name="diet" value="carnivore">
+        <label for="carnivore">Carnivore 🍖🥩</label>
+    </div>
+
+    <div class="option">
+        <input type="radio" id="none" name="diet" value="none">
+        <label for="none">None 🚫🍽️</label>
+    </div>
+{% endblock %}
+
+{% block card_footer %}
+	<div class="container d-flex justify-content-center align-items-center gap-2">
+        <button class="btn btn-success" data-mdb-ripple-init id="backQuestion">Back</button>
+        <button class="btn btn-success" data-mdb-ripple-init id="nextQuestion">Next</button>
+    </div>
+{% endblock %}

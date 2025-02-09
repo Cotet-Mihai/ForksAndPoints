@@ -1,0 +1,46 @@
+<style>
+    .option {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;  /* spațiu între categorii */
+    }
+
+    .option input[type="radio"] {
+        margin-right: 10px;  /* distanța dintre buton și text */
+    }
+
+    .option label {
+        font-size: 16px;  /* poți ajusta dimensiunea textului dacă vrei */
+    }
+
+</style>
+
+{% extends 'questionnaire/partials/baseQuestionnaire.html' %}
+
+{% block card_header %}
+    What is your gender? 🚻
+{% endblock %}
+
+{% block card_body %}
+    <div class="gender-option">
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male 👨🏻</label>
+    </div>
+
+    <div class="gender-option">
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female 👩🏻</label>
+    </div>
+
+    <div class="gender-option">
+        <input type="radio" id="nonbinary" name="gender" value="nonbinary">
+        <label for="nonbinary">Non-binary 🏳️‍🌈</label>
+    </div>
+{% endblock %}
+
+{% block card_footer %}
+	<div class="container d-flex justify-content-center align-items-center gap-2">
+        <button class="btn btn-success" data-mdb-ripple-init id="backQuestion">Back</button>
+        <button class="btn btn-success" data-mdb-ripple-init id="nextQuestion">Next</button>
+    </div>
+{% endblock %}

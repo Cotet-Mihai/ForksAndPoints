@@ -1,0 +1,21 @@
+{% extends 'questionnaire/partials/baseQuestionnaire.html' %}
+
+{% block card_header %}
+    What is your height? 📏
+{% endblock %}
+
+{% block card_body %}
+	<p class="text-center">
+        Please enter your height in cm.
+    </p>
+
+    <input type="number" id="height" class="form-control" name="height" value="150" required>
+
+{% endblock %}
+
+{% block card_footer %}
+	<div class="container d-flex justify-content-center align-items-center gap-2">
+        <button class="btn btn-success" data-mdb-ripple-init id="backQuestion">Back</button>
+        <button class="btn btn-success" data-mdb-ripple-init id="nextQuestion">Next</button>
+    </div>
+{% endblock %}

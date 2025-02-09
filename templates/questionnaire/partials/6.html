@@ -1,0 +1,20 @@
+{% extends 'questionnaire/partials/baseQuestionnaire.html' %}
+
+{% block card_header %}
+    Are you allergic to anything? ⚠️
+{% endblock %}
+
+{% block card_body %}
+    <p class="text-center">
+        If you are not allergic to anything <br> leave the field blank 📝
+    </p>
+    <input type="text" id="allergic" class="form-control" name="allergic">
+
+{% endblock %}
+
+{% block card_footer %}
+	<div class="container d-flex justify-content-center align-items-center gap-2">
+        <button class="btn btn-success" data-mdb-ripple-init id="backQuestion">Back</button>
+        <button class="btn btn-success" data-mdb-ripple-init id="nextQuestion">Next</button>
+    </div>
+{% endblock %}

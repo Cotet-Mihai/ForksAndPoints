@@ -1,0 +1,22 @@
+{% extends 'questionnaire/partials/baseQuestionnaire.html' %}
+
+{% block card_header %}
+	You cannot unlock the game without completing the first level: ✨The Quiz ✨
+{% endblock %}
+
+{% block card_body %}
+	<p class="text-block">
+        Don't worry, it's not a quiz, and we won't ask for your high school diploma! 📄😆 We just want to know what
+        you eat, what you avoid, and your lifestyle 🍴, so we can give you a personalized experience. Without this
+        info, you might end up with completely wrong diet advice. We don't think you want to be surprised at
+        breakfast with chocolate and pickles. 🍫🥒
+    </p>
+{% endblock %}
+
+{% block card_footer %}
+    <p class="text-center">
+        Click "OK" and let's get started!
+    </p>
+
+    <button class="btn btn-success w-50" data-mdb-ripple-init id="nextQuestion">OK</button>
+{% endblock %}

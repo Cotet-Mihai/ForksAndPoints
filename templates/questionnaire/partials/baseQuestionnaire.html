@@ -1,0 +1,18 @@
+<style>
+    .text-block {
+    text-align: justify; /* Justificare text */
+    width: 100%; /* Asigură încadrara în container */
+    max-width: 19rem; /* Poți ajusta dimensiunea pătratului */
+}
+
+</style>
+
+<form class="card d-flex justify-content-center align-items-center flex-column" style="width: 22rem">
+    <h5 class="card-header text-center">{% block card_header %}{% endblock %}</h5>
+    <div class="card-body">{% block card_body %}{% endblock %}</div>
+    <div class="card-footer d-flex justify-content-center align-items-center flex-column">
+        {% block card_footer %}{% endblock %}
+    </div>
+</form>
+
+<script type="module" src="{{ url_for('static', filename='js/questionnaire.js') }}"></script>
