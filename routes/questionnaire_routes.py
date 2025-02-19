@@ -25,8 +25,7 @@ def questionnaire_step(step):
         case '6':
             path = 'questionnaire/partials/6.html'
         case 'summary':
-            # todo: don't forget this page
-            return redirect(url_for('in_progress.in_progress'))
+            path = 'questionnaire/partials/summary.html'
         case _:
             path = 'questionnaire/partials/info.html'
 

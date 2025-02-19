@@ -1,0 +1,27 @@
+{% extends 'questionnaire/partials/baseQuestionnaire.html' %}
+
+{% block card_header %}
+	📋 Time for a Quick Review!
+{% endblock %}
+
+{% block card_body %}
+    <div id="summary-container">
+        <p><strong>👤 Gender:</strong> <span id="summary-gender"></span></p>
+        <p><strong>🎂 Age:</strong> <span id="summary-age"></span> years old</p>
+        <p><strong>📏 Height:</strong> <span id="summary-height"></span> cm</p>
+        <p><strong>⚖️ Weight:</strong> <span id="summary-weight"></span> kg</p>
+        <p><strong>🥗 Diet Preference:</strong> <span id="summary-diet"></span></p>
+        <p><strong>🚨 Allergies:</strong> <span id="summary-allergies"></span></p>
+    </div>
+
+    <p class="text-center mt-3">Everything looks good? If not, go back and fix it! 😉</p>
+{% endblock %}
+
+{% block card_footer %}
+    <div class="container d-flex justify-content-center align-items-center gap-2">
+        <button class="btn btn-secondary" id="backQuestion">Back</button>
+        <button class="btn btn-success" id="confirmAnswers">Confirm</button>
+    </div>
+{% endblock %}
+
+<script type="module" src="{{ url_for('static', filename='js/summary.js') }}"></script>

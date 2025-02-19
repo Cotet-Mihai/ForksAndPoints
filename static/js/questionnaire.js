@@ -45,15 +45,6 @@ function saveToLocalStorage(step, value) {
 }
 
 /**
- * Retrieves the value from localStorage.
- * @param {string} step - The key to retrieve the value from.
- * @returns {string} - The stored value.
- */
-function getFromLocalStorage(step) {
-    return localStorage.getItem(step);
-}
-
-/**
  * Validates the input element.
  * @param {string} selector - The selector of the input element.
  * @param {string} errorMessage - Error message to show if validation fails.
@@ -76,6 +67,46 @@ function validateInput(selector, errorMessage, validator = null) {
     saveToLocalStorage(selector, input.value);  // Save the valid input to localStorage
     return true;
 }
+
+/**
+    Displays the summary of the questionnaire answers.
+    It retrieves values from localStorage and sessionStorage and shows them in the summary section.
+ */
+document.addEventListener("DOMContentLoaded", function () {
+
+    function displaySummary() {
+        // Retrieve values from localStorage for each question and display them
+        document.getElementById("summary-gender").textContent = localStorage.getItem('input[name="gender"]:checked') || "Not provided";  // Gender
+        document.getElementById("summary-age").textContent = localStorage.getItem('#age') || "Not provided";  // Age
+        document.getElementById("summary-height").textContent = localStorage.getItem('#height') || "Not provided";  // Height
+        document.getElementById("summary-weight").textContent = localStorage.getItem('#weight') || "Not provided";  // Weight
+        document.getElementById("summary-diet").textContent = localStorage.getItem('input[name="diet"]:checked') || "Not provided";  // Diet
+
+        // Retrieve allergies from sessionStorage, parse it, and display in summary
+        let allergies = sessionStorage.getItem('allergies');
+        document.getElementById("summary-allergies").textContent = allergies ? JSON.parse(allergies).join(", ") : "None";  // Allergies
+    }
+
+    displaySummary();  // Call the function to display the summary when the page loads
+
+    /**
+     * Handles the click event for the "Confirm Answers" button.
+     * Alerts the user that their answers are saved and redirects them to the final step.
+     */
+    document.getElementById("confirmAnswers").addEventListener("click", function () {
+        alert("Great! Your answers are saved. Let's move on! 🚀");  // Show confirmation message
+        window.location.href = "/in-progress/";
+    });
+
+    /**
+     * Handles the click event for the "Back" button.
+     * Prevents the default action and navigates the user back to the previous page.
+     */
+    document.getElementById("backQuestion").addEventListener("click", function (e) {
+        e.preventDefault();  // Prevents the default behavior of the "Back" button
+        window.history.back();  // Navigate the user back to the previous page in the browser history
+    });
+});
 
 /**
  * Event listener for the "Next Question" button.
