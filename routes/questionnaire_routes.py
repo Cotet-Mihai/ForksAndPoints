@@ -8,6 +8,10 @@ def questionnaire_step(step):
     if 'userID' not in session:
         return redirect(url_for('auth.sign_in'))
 
+    # Check if this is your first time registering
+    if Users.query.filter_by(pid=session['userID']).first().firstTime == 0:
+        return redirect(url_for('rooms.rooms'))
+
     match step:
         case 'info':
             path = 'questionnaire/partials/info.html'

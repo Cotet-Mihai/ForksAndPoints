@@ -11,7 +11,7 @@
 
     <div id="summary-container" class="container">
         <p class="text-center"><strong>👤 Gender:</strong> <span id="summary-gender"></span></p>
-        <p class="text-center"><strong>🎂 Age:</strong> <span id="summary-age"></span> years old</p>
+        <p class="text-center"><strong>🎂 Birthday:</strong> <span id="summary-birthday"></span></p>
         <p class="text-center"><strong>📏 Height:</strong> <span id="summary-height"></span> cm</p>
         <p class="text-center"><strong>⚖️ Weight:</strong> <span id="summary-weight"></span> kg</p>
         <p class="text-center"><strong>🥗 Diet Preference:</strong> <span id="summary-diet"></span></p>
@@ -21,9 +21,9 @@
 {% endblock %}
 
 {% block card_footer %}
-    <div class="container d-flex justify-content-center align-items-center gap-2">
-        <button class="btn btn-secondary" id="backQuestion">Back</button>
-        <button class="btn btn-success" id="confirmAnswers">Confirm</button>
+    <div class="container d-flex flex-row-reverse justify-content-center align-items-center gap-2">
+        <button class="btn btn-success" data-mdb-ripple-init id="confirmAnswers">Next</button>
+        <button class="btn btn-secondary" data-mdb-ripple-init id="backQuestion">Back</button>
     </div>
 {% endblock %}
 

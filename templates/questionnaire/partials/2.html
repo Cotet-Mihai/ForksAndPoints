@@ -1,20 +1,20 @@
 {% extends 'questionnaire/partials/baseQuestionnaire.html' %}
 
 {% block card_header %}
-    How old are you? 🎂
+    What is your date of birth? <br> 🎂
 {% endblock %}
 
 <!-- todo: change to take birthday, not the age-->
 
 {% block card_body %}
 
-    <input type="number" id="age" class="form-control" name="age" value="30" required>
+    <input type="date" id="birthday" class="form-control" name="birthday" required>
 
 {% endblock %}
 
 {% block card_footer %}
-	<div class="container d-flex justify-content-center align-items-center gap-2">
-        <button class="btn btn-secondary" data-mdb-ripple-init id="backQuestion">Back</button>
+	<div class="container d-flex flex-row-reverse justify-content-center align-items-center gap-2">
         <button class="btn btn-success" data-mdb-ripple-init id="nextQuestion">Next</button>
+        <button class="btn btn-secondary" data-mdb-ripple-init id="backQuestion">Back</button>
     </div>
 {% endblock %}

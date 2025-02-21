@@ -8,13 +8,13 @@
     <p class="text-center">
         If you are not allergic to anything, <br> leave the field blank 📝 <br><br> If you have multiple allergies, please separate them with commas.
     </p>
-    <input type="text" id="allergic" class="form-control" name="allergic" placeholder="e.g., nuts, milk, gluten">
+    <input type="text" id="allergic" class="form-control" name="allergic" placeholder="e.g. nuts, milk, gluten">
 
 {% endblock %}
 
 {% block card_footer %}
-	<div class="container d-flex justify-content-center align-items-center gap-2">
-        <button class="btn btn-secondary" data-mdb-ripple-init id="backQuestion">Back</button>
+	<div class="container d-flex flex-row-reverse justify-content-center align-items-center gap-2">
         <button class="btn btn-success" data-mdb-ripple-init id="nextQuestion">Next</button>
+        <button class="btn btn-secondary" data-mdb-ripple-init id="backQuestion">Back</button>
     </div>
 {% endblock %}

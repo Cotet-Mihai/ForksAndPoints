@@ -15,7 +15,7 @@ class PersonalInformations(db.Model):
     pid = db.Column(db.Integer, primary_key=True)
     userID = db.Column(db.Integer, db.ForeignKey('users.pid', ondelete='CASCADE'), nullable=False)
     gender = db.Column(db.String(20), nullable=False)
-    age = db.Column(db.Integer, nullable=False)
+    birthday = db.Column(db.Date, nullable=False)
     height = db.Column(db.Integer, nullable=False)
     weight = db.Column(db.Integer, nullable=False)
     diet = db.Column(db.String(20), nullable=True)
