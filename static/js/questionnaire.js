@@ -93,9 +93,30 @@ document.addEventListener("DOMContentLoaded", function () {
      * Handles the click event for the "Confirm Answers" button.
      * Alerts the user that their answers are saved and redirects them to the final step.
      */
-    document.getElementById("confirmAnswers").addEventListener("click", function () {
-        alert("Great! Your answers are saved. Let's move on! 🚀");  // Show confirmation message
-        window.location.href = "/in-progress/";
+    document.getElementById("confirmAnswers").addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const data = {
+                gender: localStorage.getItem('input[name="gender"]:checked') || "Not provided",
+                age: localStorage.getItem('#age') || "Not provided",
+                height: localStorage.getItem('#height') || "Not provided",
+                weight: localStorage.getItem('#weight') || 'Not provided',
+                diet: localStorage.getItem('input[name="diet"]:checked') || 'Not provided',
+                allergies: sessionStorage.getItem('allergies')
+            }
+
+        fetch('/rooms/get-questionnaire-info', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.text())
+            .then(url => window.location.href = url)
+            .catch(error => {
+                console.log(error)
+            })
     });
 
     /**

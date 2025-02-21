@@ -25,14 +25,14 @@ def create_app():
     # Blueprints
 
     from routes.auth_routes import auth_bp
-    from routes.rooms_routes import rooms_bp
     from routes.questionnaire_routes import questionnaire_bp
     from routes.in_progress_routes import in_progress_bp
+    from routes.rooms_routes import rooms_bp
 
     app.register_blueprint(auth_bp)
-    app.register_blueprint(rooms_bp)
     app.register_blueprint(questionnaire_bp)
     app.register_blueprint(in_progress_bp)
+    app.register_blueprint(rooms_bp)
 
     # Migrate
 
