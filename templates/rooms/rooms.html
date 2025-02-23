@@ -1,0 +1,15 @@
+{% extends '/auth/base.html' %}
+{% block title %}
+	Forks and Points - Rooms
+{% endblock %}
+{% block content %}
+    <div class="card d-flex" style="width: 22rem;">
+        <div class="card-header text-center mt-3">
+            <h3>What you want to do ?</h3>
+        </div>
+        <div class="card-body">
+            <button type="button" class="btn btn-success btn-block" data-mdb-ripple-init onclick="document.location.href = '/rooms/find-room'">Find your room</button>
+            <button type="button" class="btn btn-success btn-block" data-mdb-ripple-init onclick="document.location.href = '/in-progress'">Create your room</button>
+        </div>
+    </div>
+{% endblock %}
